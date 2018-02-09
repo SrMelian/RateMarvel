@@ -2,7 +2,6 @@
     global $, Chart
 */
 
-
 let charactersLocal;
 
 let comicsLocal;

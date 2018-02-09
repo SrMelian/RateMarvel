@@ -90,6 +90,8 @@ $lines-to-show: 3;
 
 /* END To Top Button */
 
+/* START Spinner */
+
 $itemSize: 50;
 $itemSpacing: 2;
 $loaderColor: rgba(61, 92, 126, 0.7);
@@ -147,3 +149,388 @@ $animationTiming: cubic-bezier(.645, .045, .355, 1);
         transform: rotateY(180deg);
     }
 }
+
+/* END Spinner */
+
+/* START FilterButton */
+
+$green: #0c8;
+$blue: #08c;
+$offwhite: #eee;
+$offblack: #1D1F20;
+$shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+$timing: 0.3s;
+$trans: 4px;
+$font: 'Raleway',
+sans-serif;
+$bar: 36px;
+$spacing: 15px;
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box; // -webkit-font-smoothing: antialiased;
+    // font-smoothing: antialiased;
+    // text-rendering: optimizeLegibility;
+}
+
+.animated {
+    -webkit-transition: all $timing;
+    -ms-transition: all $timing;
+    transition: all $timing;
+}
+
+#email-popup {
+    position: fixed;
+    bottom: $spacing;
+    right: -100%;
+    &:focus+.email {
+        background: $green;
+    }
+    &:focus~.mail .close-area {
+        .close {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        &:before {
+            opacity: 0;
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+        &:after {
+            opacity: 1;
+            -webkit-transform: translateX(-$trans);
+            transform: translateX(-$trans);
+        }
+    }
+    &:checked~.mail {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+    &:checked+.email {
+        background: $green;
+        &:hover {
+            &:before {
+                opacity: 0;
+            }
+        }
+        .icons {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        .email-icon {
+            opacity: 0;
+        }
+        .pen-icon {
+            opacity: 1;
+        }
+    }
+}
+
+.email {
+    position: fixed;
+    bottom: $spacing;
+    left: $spacing;
+    width: $spacing * 4;
+    height: $spacing * 4;
+    background: $blue;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: $shadow;
+    overflow: hidden;
+    .waves-ripple {
+        border-radius: 100%;
+    }
+    &:before {
+        content: 'Advanced Filter';
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 5px);
+        -webkit-transform: translate(-10px, -50%);
+        transform: translate(-10px, -50%);
+        background: $offblack;
+        color: $offwhite;
+        padding: 5px 8px;
+        border-radius: 0.3em;
+        font-size: 14px;
+        opacity: 0;
+        max-width: 0;
+        overflow: hidden;
+        -webkit-transition: all $timing;
+        transition: all $timing;
+    }
+    .icons {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .email-icon,
+    .pen-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 50%;
+    }
+    .email-icon {
+        path {
+            fill: $offwhite;
+        }
+    }
+    .pen-icon {
+        opacity: 0;
+        -webkit-transform: translate(-50%, -50%) rotate(180deg);
+        transform: translate(-50%, -50%) rotate(180deg);
+        path,
+        polygon {
+            fill: $offwhite;
+        }
+    }
+    &:hover {
+        background: $green;
+        &:before {
+            max-width: 75px;
+            opacity: 1;
+        }
+        .icons {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        .email-icon {
+            opacity: 0;
+        }
+        .pen-icon {
+            opacity: 1;
+        }
+    }
+}
+
+.mail {
+    position: fixed;
+    bottom: 0;
+    left: $spacing * 6;
+    width: 276px;
+    padding: ($spacing + $bar) $spacing $spacing $spacing;
+    background: $offwhite;
+    box-sizing: border-box;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    opacity: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 0.3em 0.3em 0 0;
+    .top-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: $offblack;
+        height: $bar;
+        border-radius: 0.3em 0.3em 0 0;
+        svg {
+            height: 20px;
+            width: 17px;
+            position: absolute;
+            top: 8px;
+            left: $spacing;
+            path {
+                fill: $offwhite;
+            }
+        }
+        .close-area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            &:before {
+                content: 'Advanced Filter';
+                position: absolute;
+                line-height: $bar;
+                left: 39px;
+                color: $offwhite;
+                font-size: 14px;
+                letter-spacing: 0.75px;
+                -webkit-transform: translateX($trans);
+                transform: translateX($trans);
+                opacity: 1;
+                -webkit-transition: transform 0.3s, opacity 0.3s;
+                transition: transform 0.3s, opacity 0.3s;
+            }
+            &:after {
+                content: 'Close';
+                position: absolute;
+                line-height: $bar;
+                right: 29px;
+                color: $offwhite;
+                font-size: 14px;
+                letter-spacing: 0.75px;
+                opacity: 0;
+                -webkit-transition: transform 0.3s, opacity 0.3s;
+                transition: transform 0.3s, opacity 0.3s;
+            }
+            &:focus,
+            &:hover {
+                outline: none;
+                .close {
+                    background: rgba(255, 255, 255, 0.1);
+                }
+                &:before {
+                    opacity: 0;
+                    -webkit-transform: translateX(0);
+                    transform: translateX(0);
+                }
+                &:after {
+                    opacity: 1;
+                    -webkit-transform: translateX(-$trans);
+                    transform: translateX(-$trans);
+                }
+            }
+            .close {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: $bar;
+                width: 100%;
+                cursor: pointer;
+                z-index: 2;
+                &:before,
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    right: 11px;
+                    height: 2px;
+                    width: 14px;
+                    background: $offwhite;
+                }
+                &:before {
+                    -webkit-transform: translateY(-50%) rotate(-45deg);
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+                &:after {
+                    -webkit-transform: translateY(-50%) rotate(45deg);
+                    transform: translateY(-50%) rotate(45deg);
+                }
+            }
+        }
+    }
+    textarea {
+        -webkit-transition: background $timing, border-bottom $timing, padding $timing;
+        transition: background $timing, border-bottom $timing, padding $timing;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        position: relative;
+        float: left;
+        width: 100%;
+        margin-bottom: $spacing;
+        border: none;
+        border-bottom: 2px solid $blue;
+        padding: 0 0 10px 0;
+        background: transparent;
+        max-width: 100%;
+        min-width: 100%;
+        font-family: $font;
+        font-size: 13px;
+        &::-webkit-input-placeholder {
+            color: lighten($offblack, 20%);
+            font-family: $font;
+            font-weight: 400;
+        }
+        &:-moz-placeholder {
+            color: lighten($offblack, 20%);
+            font-family: $font;
+            font-weight: 400;
+            opacity: 1;
+        }
+        &::-moz-placeholder {
+            color: lighten($offblack, 20%);
+            font-family: $font;
+            font-weight: 400;
+            opacity: 1;
+        }
+        &:-ms-input-placeholder {
+            color: lighten($offblack, 20%);
+            font-family: $font;
+            font-weight: 400;
+        }
+        &:placeholder-shown {
+            color: lighten($offblack, 20%);
+            font-family: $font;
+            font-weight: 400;
+        }
+        &:focus {
+            outline: none;
+            border-bottom-color: $green;
+            background: #fff;
+            padding: 10px;
+        }
+    }
+    button {
+        border: none;
+        background: $blue;
+        color: $offwhite;
+        letter-spacing: 1px;
+        cursor: pointer;
+        position: relative;
+        float: left;
+        text-transform: uppercase;
+        box-shadow: $shadow;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        span {
+            font-size: 15px;
+            position: relative;
+            float: left;
+            font-family: $font;
+        }
+        &:hover,
+        &:focus {
+            outline: none;
+            background: $green;
+        }
+    }
+}
+
+@media (max-width: 390px) {
+    .mail {
+        left: 50%;
+        -webkit-transform: translate3d(50%, 100%, 0);
+        transform: translate3d(50%, 100%, 0);
+        -webkit-transform-origin: 50% 50% 50%;
+        transform-origin: 50% 50% 50%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        z-index: 12;
+    }
+    .mail *,
+    .mail *:before,
+    .mail *:after {
+        // -webkit-font-smoothing: antialiased;
+        // font-smoothing: antialiased;
+        // text-rendering: optimizeLegibility;
+    }
+    #email-popup:checked+.email {
+        opacity: 0;
+        right: 50%;
+        -webkit-transform: translate3d(50%, 0, 0);
+        transform: translate3d(50%, 0, 0);
+    }
+    #email-popup:checked~.mail {
+        -webkit-transform: translate3d(50%, 0, 0);
+        transform: translate3d(50%, 0, 0);
+    }
+}
+
+/* END FilterButton */
