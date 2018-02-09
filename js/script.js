@@ -14,6 +14,7 @@ let $progressModal = $('#progressModal');
 
 $(document).ready(function() {
     $progressModal.modal('show');
+    $('button[data-toggle="tooltip"]').tooltip();
     if (localStorage.characters == undefined
         || localStorage.comics == undefined) {
         getFromApi();
@@ -292,11 +293,13 @@ function userCanVote(email, votingCharacter) {
     for (const key in usersLocal) {
         if (usersLocal.hasOwnProperty(key)) {
             const element = usersLocal[key];
-            if (element.email == email && element.votedCharacter == votingCharacter) {
-                returned = false;
-                break;
-            } else if (element.votedComic) {
-                returned = false;
+            if (element.email == email) {
+                if (votingCharacter && element.votedCharacter) {
+                    returned = false;
+                }
+                if (!votingCharacter && element.votedComic) {
+                    returned = false;
+                }
             }
         }
     }
