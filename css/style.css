@@ -1,0 +1,163 @@
+#mainWrapper {
+  padding-top: 70px; }
+  #mainWrapper img {
+    cursor: pointer; }
+
+.card.character,
+.card.comic {
+  width: 18rem;
+  margin: 10px; }
+
+.modal {
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+.icon {
+  width: 16px;
+  height: 16px; }
+
+.icon-account-login {
+  fill: #f00; }
+
+#characters-pagination,
+#comics-pagination {
+  margin: 20px 0; }
+
+/*#343A40*/
+/* START Ellipsis Sinopsis */
+.card-text {
+  height: 72px;
+  overflow: hidden;
+  display: -webkit-box;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; }
+
+/* END Ellipsis Sinopsis */
+/* START To Top Button */
+.to-top {
+  padding: 20px;
+  /*background-color: #bdc3c7;*/
+  background-color: #bdc3c7;
+  width: 60px;
+  height: 60px;
+  float: right;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  display: none;
+  -webkit-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease; }
+
+.to-top:hover {
+  -webkit-box-shadow: 0 0 10px #333;
+  box-shadow: 0 0 10px #333; }
+
+.to-top:before {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  position: relative;
+  right: 4px;
+  bottom: 2px;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #343A40; }
+
+.visible {
+  display: initial; }
+
+/* END To Top Button */
+.loader {
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  text-align: center;
+  margin-top: 80%; }
+
+.loader--3d {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-perspective: 800px;
+  perspective: 800px; }
+
+.loader-item {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-left: 2px;
+  background-color: rgba(61, 92, 126, 0.7);
+  color: rgba(61, 92, 126, 0.7);
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+  .loader-item:nth-child(1) {
+    -webkit-animation-delay: 100ms;
+    animation-delay: 100ms; }
+  .loader-item:nth-child(2) {
+    -webkit-animation-delay: 200ms;
+    animation-delay: 200ms; }
+  .loader-item:nth-child(3) {
+    -webkit-animation-delay: 300ms;
+    animation-delay: 300ms; }
+  .loader-item:nth-child(4) {
+    -webkit-animation-delay: 400ms;
+    animation-delay: 400ms; }
+  .loader-item:nth-child(5) {
+    -webkit-animation-delay: 500ms;
+    animation-delay: 500ms; }
+  .loader-item:nth-child(6) {
+    -webkit-animation-delay: 600ms;
+    animation-delay: 600ms; }
+  .loader--flipHoz .loader-item {
+    -webkit-animation-name: flipHoz;
+    animation-name: flipHoz; }
+  .loader--flipHoz .loader-item:nth-child(1) {
+    -webkit-animation-delay: 150ms;
+    animation-delay: 150ms; }
+  .loader--flipHoz .loader-item:nth-child(2) {
+    -webkit-animation-delay: 300ms;
+    animation-delay: 300ms; }
+  .loader--flipHoz .loader-item:nth-child(3) {
+    -webkit-animation-delay: 450ms;
+    animation-delay: 450ms; }
+  .loader--flipHoz .loader-item:nth-child(4) {
+    -webkit-animation-delay: 600ms;
+    animation-delay: 600ms; }
+  .loader--flipHoz .loader-item:nth-child(5) {
+    -webkit-animation-delay: 750ms;
+    animation-delay: 750ms; }
+  .loader--flipHoz .loader-item:nth-child(6) {
+    -webkit-animation-delay: 900ms;
+    animation-delay: 900ms; }
+
+@-webkit-keyframes flipHoz {
+  0% {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg); }
+  40% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg); }
+  100% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg); } }
+
+@keyframes flipHoz {
+  0% {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg); }
+  40% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg); }
+  100% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg); } }

@@ -1,0 +1,149 @@
+#mainWrapper {
+    padding-top: 70px;
+    img {
+        cursor: pointer;
+    }
+}
+
+.card.character,
+.card.comic {
+    width: 18rem;
+    margin: 10px;
+}
+
+.modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+}
+
+.icon-account-login {
+    fill: #f00;
+}
+
+#characters-pagination,
+#comics-pagination {
+    margin: 20px 0;
+}
+
+/*#343A40*/
+
+/* START Ellipsis Sinopsis */
+
+$font-size: 16px;
+$line-height: 1.5;
+$lines-to-show: 3;
+.card-text {
+    height: $font-size*$line-height*$lines-to-show;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* END Ellipsis Sinopsis */
+
+/* START To Top Button */
+
+.to-top {
+    padding: 20px;
+    /*background-color: #bdc3c7;*/
+    background-color: #bdc3c7;
+    width: 60px;
+    height: 60px;
+    float: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    display: none;
+    transition: all .8s ease;
+}
+
+.to-top:hover {
+    box-shadow: 0 0 10px #333;
+}
+
+.to-top:before {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    position: relative;
+    right: 4px;
+    bottom: 2px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid #343A40;
+}
+
+.visible {
+    display: initial;
+}
+
+/* END To Top Button */
+
+$itemSize: 50;
+$itemSpacing: 2;
+$loaderColor: rgba(61, 92, 126, 0.7);
+$loaderDelay: 100;
+$loaderDuration: 2000;
+$animationTiming: cubic-bezier(.645, .045, .355, 1);
+.loader {
+    display: block;
+    overflow: hidden; // margin-bottom: 15%;
+    font-size: 0;
+    text-align: center;
+    margin-top: 80%;
+}
+
+.loader--3d {
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.loader-item {
+    display: inline-block;
+    width: $itemSize + px;
+    height: $itemSize + px;
+    margin-left: $itemSpacing + px;
+    background-color: $loaderColor;
+    color: $loaderColor;
+    animation-duration: $loaderDuration + ms;
+    animation-timing-function: $animationTiming;
+    animation-iteration-count: infinite;
+    @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+            animation-delay: ($i * $loaderDelay) + ms;
+        }
+    }
+    .loader--flipHoz & {
+        animation-name: flipHoz;
+    }
+    .loader--flipHoz & {
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i}) {
+                animation-delay: ($i * $loaderDelay*1.5) + ms;
+            }
+        }
+    }
+}
+
+@keyframes flipHoz {
+    0% {
+        transform: rotateY(0deg);
+    }
+    40% {
+        transform: rotateY(180deg);
+    }
+    100% {
+        transform: rotateY(180deg);
+    }
+}
